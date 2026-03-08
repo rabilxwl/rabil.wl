@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do you love me?</title>
+  <style>
+    body {
+      background-color: #000; /* pitch black */
+      color: #b30000;         /* blood red */
+      font-family: 'Creepster', cursive, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      transition: background-color 1.5s ease; /* smooth fade */
+    }
+
+    p {
+      font-size: 2.5em;
+      text-shadow: 0 0 15px red, 0 0 30px darkred;
+    }
+
+    button {
+      background-color: #111;
+      color: crimson;
+      border: 2px solid crimson;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      cursor: pointer;
+      margin: 15px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: crimson;
+      color: #000;
+      text-shadow: 0 0 10px #ff0000;
+    }
+
+    /* Bounce animation for No */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-20px); }
+      50% { transform: translateY(10px); }
+      75% { transform: translateY(-10px); }
+    }
+
+    .bounce {
+      animation: bounce 1s ease-in-out;
+    }
+
+    /* Grow + glow animation for Yes */
+    .grow {
+      transform: scale(2);
+      color: #ff0000;
+      text-shadow: 0 0 25px red, 0 0 50px darkred;
+      border: none;           /* remove border rectangle */
+      background: none;       /* remove background */
+    }
+
+    /* Fade-out effect for body */
+    .fadeOut {
+      background-color: #111; /* fade to dark gray */
+      color: #000;            /* text fades */
+    }
+  </style>
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p>Do you love me?</p>
+  <button id="yesBtn">Yes</button>
+  <button id="noBtn">No</button>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const body = document.body;
+
+    // Yes button → grows, loses border, fades background, then redirects
+    yesBtn.addEventListener("click", () => {
+      yesBtn.classList.add("grow");
+      body.classList.add("fadeOut");
+      setTimeout(() => {
+        window.location.href = "2.html"; // forwards to page 2.html
+      }, 2000);
+    });
+
+    // No button → bounce then disappear
+    noBtn.addEventListener("click", () => {
+      noBtn.classList.add("bounce");
+      setTimeout(() => {
+        noBtn.style.display = "none"; // vanish after bounce
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
